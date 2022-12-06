@@ -6,7 +6,7 @@
         </div>
         <el-breadcrumb class="nav-links" separator="|">
           <el-breadcrumb-item :to="{ path: '/' }">Home</el-breadcrumb-item>
-          <el-breadcrumb-item :to="{ path: '/about' }">About</el-breadcrumb-item>
+          <el-breadcrumb-item :to="{ path: '/register' }">Register</el-breadcrumb-item>
         </el-breadcrumb>
       </el-header>
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
@@ -37,8 +37,12 @@ export default {
   color: #666;
 }
 
+.el-breadcrumb__inner, .is-link {
+  color: #eee;
+}
+
 .header {
-  background-color: rgb(40, 95, 255);
+  background-color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -46,7 +50,7 @@ export default {
 
 .header h1 {
   font-size: 1.5em;
-  color: #eee;
+  color: #333;
 }
 
 .nav-links el-link {
@@ -55,27 +59,11 @@ export default {
 
 .view {
   padding: 54px 0 54px;
-}
-
-.footer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  height: 18vh;
-  margin: 0 auto;
-  background-color: #666;
-  color: #eee;
-}
-
-.footer h1 {
-  font-size: 16px;
-  margin-bottom: 6px;
-}
-
-.footer p {
-  font-size: 12px;
-  margin: 2px;
+  background-image: url('@/assets/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 74.5vh;
 }
 
 </style>
