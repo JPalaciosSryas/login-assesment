@@ -45,18 +45,40 @@
           dateOfBirth: '',
           email: '',
           password: ''
-        }
+        },
+        isValid: true
       }
     },
     methods: {
       onSubmit() {
         const regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
-        console.log(this.form.name);
-        console.log<(this.form.lastName);
-        console.log(this.form.dateOfBirth)
-        regex.test(this.form.email) ? console.log(this.form.email) : console.log('Invalid email address');
+        if (!regex.test(this.form.email)) {
+          // console.log('Please introduce a valid e-mail')
+          this.$alert('Please introduce a valid e-mail. ', 'Error', {confirmButtonText: 'OK'});
+          this.isValid = false;
+          setTimeout(() => {this.isValid = true}, 1000);
+        }
+        if (!this.form.name || !this.form.lastName || !this.form.dateOfBirth || !this.form.password) {
+          // console.log('Please fill the empty fields')
+          this.$alert('Please fill the empty fields. ', 'Error', {confirmButtonText: 'OK'});
+          this.isValid = false;
+          setTimeout(() => {this.isValid = true}, 1000);
+        }
+        // console.log(this.form.name);
+        // console.log(this.form.lastName);
+        // console.log(this.form.dateOfBirth)
+        console.log(this.form.email)
         console.log(this.form.password);
-        this.$router.push('/');
+        if (this.isValid) {
+          console.log('Successfuly registered!')
+          this.$router.push({
+            name: 'login',
+            params: {
+              newEmail: 'Hola',
+              newPassword: 'Mundo'
+            }
+          });
+        }
       }
     }
   }
@@ -99,10 +121,6 @@
 
     .el-date-editor.el-input {
       width: 280px !important;
-    }
-  
-    #dateOfBirth {
-      justify-self: flex-start;
     }
 
     .login {

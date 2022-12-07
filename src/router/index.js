@@ -8,7 +8,8 @@ const routes = [
   {
     path: '/',
     name: 'login',
-    component: LoginView
+    component: LoginView,
+    props: true
   },
   {
     path: '/register',

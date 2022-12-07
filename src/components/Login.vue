@@ -33,33 +33,38 @@ export default {
         email: '',
         password: ''
       },
-      myEmail: 'jpalacios@example.com',
-      myPassword: '123456',
-      isValid: true
     }
   },
+  props: [
+    'newEmail', 
+    'newPassword'
+  ],
   methods: {
     onSubmit() {
+      // console.log(this.newEmail);
       const regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
       if (!regex.test(this.form.email)) {
-        console.log('Invalid email address');
+        // console.log('Invalid email address');
+        this.$alert('Invalid email address. ', 'Error', {confirmButtonText: 'OK'});
         this.isValid = false;
         setTimeout(() => {this.isValid = true}, 1000);
       }
-      if (this.form.email !== this.myEmail) {
-        console.log('Email not found');
+      if (this.form.email !== this.newEmail) {
+        // console.log('Email not found');
+        this.$alert('Email not found. ', 'Error', {confirmButtonText: 'OK'});
         this.isValid = false;
         setTimeout(() => {this.isValid = true}, 1000);
       }
-      if (this.form.password !== this.myPassword) {
-        console.log('Invalid password');
+      if (this.form.password !== this.newPassword) {
+        // console.log('Invalid password');
+        this.$alert('Invalid password. ', 'Error', {confirmButtonText: 'OK'});
         this.isValid = false;
         setTimeout(() => {this.isValid = true}, 1000);
       }
-      console.log('Welcome, Juan Carlos')
-      console.log(this.form.email);
-      console.log(this.form.password);
-      console.log(this.isValid);
+      // console.log('Welcome, Juan Carlos')
+      // console.log(this.form.email);
+      // console.log(this.form.password);
+      // console.log(this.isValid);
       if (this.isValid) {
         this.ifValid()
       }
