@@ -33,12 +33,11 @@ export default {
         email: '',
         password: ''
       },
+      myEmail: 'jpalacios@example.com',
+      myPassword: '123456',
+      isValid: true
     }
   },
-  props: [
-    'newEmail', 
-    'newPassword'
-  ],
   methods: {
     onSubmit() {
       // console.log(this.newEmail);
@@ -48,14 +47,12 @@ export default {
         this.$alert('Invalid email address. ', 'Error', {confirmButtonText: 'OK'});
         this.isValid = false;
         setTimeout(() => {this.isValid = true}, 1000);
-      }
-      if (this.form.email !== this.newEmail) {
+      } else if (this.form.email !== this.myEmail) {
         // console.log('Email not found');
         this.$alert('Email not found. ', 'Error', {confirmButtonText: 'OK'});
         this.isValid = false;
         setTimeout(() => {this.isValid = true}, 1000);
-      }
-      if (this.form.password !== this.newPassword) {
+      } else if (this.form.password !== this.myPassword) {
         // console.log('Invalid password');
         this.$alert('Invalid password. ', 'Error', {confirmButtonText: 'OK'});
         this.isValid = false;
